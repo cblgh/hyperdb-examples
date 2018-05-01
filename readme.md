@@ -22,3 +22,8 @@ there's a small cli (see [input.js](https://github.com/cblgh/hyperdb-examples/bl
 &nbsp;&nbsp;&nbsp;&nbsp;check if `key` is authorized to write to the database
 #### `.auth <key>`   
 &nbsp;&nbsp;&nbsp;&nbsp;authorize `key` to write to the database
+
+## References
+* [mafintosh/hyperdb](https://github.com/mafintosh/hyperdb) dat's distributed scalable database, see the full api
+* [jimpick/dat-shopping-list](https://github.com/jimpick/dat-shopping-list) an interactive web demo using hyperdb by way of [hyperdrive#hyperdb-backend](https://github.com/mafintosh/hyperdrive/tree/hyperdb-backend)
+* [substack/chatmesh](https://github.com/substack/chatmesh/) a cli chat client built on hyperdb
