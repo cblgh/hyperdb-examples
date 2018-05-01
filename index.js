@@ -22,9 +22,10 @@ db.on("ready", function() {
 // * connect to db.key, authorize using db.local.key
 // * db.authorize / db.authorized doesn't accept a string as key; needs buffer
 
-// TODO: implement small interface to
-// * POST key, value
-// * AUTORHIZE other peer
+// TODO:
+// * CLEAN the code
+// * DOCUMENT what i am doing
+// * READ substack's mesh code and diff with mine
 // * USE hyperdiscovery instead
 
 // HYPERDB ISSUES:
@@ -35,20 +36,35 @@ db.on("ready", function() {
 //   "Error: Another hypercore is stored here"
 //
 function setupSwarm(db) {
-    console.log(db.local.key.toString("hex"))
+    var dbstr = db.key.toString("hex")
     var swarm = discovery(swarmDefaults({
-        id: db.key.toString("hex"),
+        id: dbstr,
         stream: function(peer) {
-            console.log("swarm.stream peer", peer)
-            return db.replicate({live: true}) // TODO: figure out what this does
+            console.log("swarm.stream peer")
+            return db.replicate({ // TODO: figure out what this truly does
+                live: true,
+                userData: db.local.key
+            }) 
         }
     }))
-    var key = db.key
-    console.log("swarm key", key.toString("hex"))
-    swarm.join(key.toString("hex"))
+    console.log("swarm key", dbstr)
+    swarm.join(dbstr)
     swarm.on("connection", (peer) => {
-        console.log("# peers: ", swarm.connected)
-        console.log("new peer joined")
+        if (!peer.remoteUserData) {
+            console.log("peer missing user data")
+            return
+        }
+        console.log(peer.remoteUserData)
+        console.log(peer.remoteUserData.toString("hex"))
+        try { var key = Buffer.from(peer.remoteUserData) }
+        catch (err) { console.error(err); return }
+        db.authorized(key, function (err, auth) {
+            console.log(key.toString("hex"), "authorized: " + auth)
+            if (err) return console.log(err)
+            if (!auth) db.authorize(key, function (err) {
+                if (err) return console.log(err)
+            })
+        })
     })
     return swarm
 }

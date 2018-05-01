@@ -24,13 +24,13 @@ function readInput(db) {
             var [key, value] = arg.split("=")
             db.put(key, value, logResult)
         } else if (cmd === "auth") {
-            db.authorize(new Buffer(arg), logResult)
+            db.authorize(Buffer.from(arg), logResult)
         } else if (cmd === "local") {
             console.log("local key is\n\t", db.local.key.toString("hex"))
         } else if (cmd === "db") {
             console.log("db key is\n\t", db.key.toString("hex"))
         } else if (cmd === "registered") {
-            db.authorized(new Buffer(arg), logResult)
+            db.authorized(Buffer.from(arg), logResult)
         }
     })
 }
