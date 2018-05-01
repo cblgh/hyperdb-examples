@@ -3,7 +3,8 @@ a small example on how to get up and running with [hyperdb](https://github.com/m
 
 #### `npm install && node index.js --db db1`
 then in another terminal window, using the key that is printed under `db key is` write   
-`node index.js --db db2 --key <key>` where `<key>` is the key that was printed above
+#### `node index.js --db db2 --key <key>` 
+where `<key>` is the key that was printed above
 
 
 ### commands
