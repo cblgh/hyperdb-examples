@@ -2,13 +2,13 @@
 a small example on how to get up and running with [hyperdb](https://github.com/mafintosh/hyperdb) 
 
 #### `npm install && node index.js --db db1`
-then in another terminal window, using the key that is printed under `db key is` write   
+then in another terminal window, using the key that is printed under `db key is`, write   
 #### `node index.js --db db2 --key <key>` 
 where `<key>` is the key that was printed above
 
 
-### commands
-there's a small cli for interacting with the hyperdb. use it as follows
+## Commands
+there's a small cli (see [input.js](https://github.com/cblgh/hyperdb-examples/blob/master/input.js)) for interacting with the hyperdb. use it as follows
 
 #### `.db`   
 &nbsp;&nbsp;&nbsp;&nbsp;print out the db key
