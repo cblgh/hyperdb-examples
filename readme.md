@@ -15,9 +15,11 @@ there's a small cli (see [input.js](https://github.com/cblgh/hyperdb-examples/bl
 #### `.local`   
 &nbsp;&nbsp;&nbsp;&nbsp;print out the local feed's key
 #### `.get <key>`   
-&nbsp;&nbsp;&nbsp;&nbsp;print out the information stored at `key`
+&nbsp;&nbsp;&nbsp;&nbsp;print out the information stored at `key`  
+&nbsp;&nbsp;&nbsp;&nbsp;`.get hello` 
 #### `.put <key>=<value>`   
-&nbsp;&nbsp;&nbsp;&nbsp;store `value` under `key` in the database
+&nbsp;&nbsp;&nbsp;&nbsp;store `value` under `key` in the database  
+&nbsp;&nbsp;&nbsp;&nbsp;`.put hello=world`
 #### `.registered <key>`   
 &nbsp;&nbsp;&nbsp;&nbsp;check if `key` is authorized to write to the database
 #### `.auth <key>`   
