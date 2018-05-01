@@ -10,9 +10,15 @@ where `<key>` is the key that was printed above
 ### commands
 there's a small cli for interacting with the hyperdb. use it as follows
 
-#### `.db` print out the db key
-#### `.local` print out the local feed's key
-#### `.get <key>` print out the information stored at `key`
-#### `.put <key>=<value>` store `value` under `key` in the database
-#### `.registered <key>` check if `key` is authorized to write to the database
-#### `.auth <key>` authorize `key` to write to the database
+#### `.db`   
+&nbsp;&nbsp;&nbsp;&nbsp;print out the db key
+#### `.local`   
+&nbsp;&nbsp;&nbsp;&nbsp;print out the local feed's key
+#### `.get <key>`   
+&nbsp;&nbsp;&nbsp;&nbsp;print out the information stored at `key`
+#### `.put <key>=<value>`   
+&nbsp;&nbsp;&nbsp;&nbsp;store `value` under `key` in the database
+#### `.registered <key>`   
+&nbsp;&nbsp;&nbsp;&nbsp;check if `key` is authorized to write to the database
+#### `.auth <key>`   
+&nbsp;&nbsp;&nbsp;&nbsp;authorize `key` to write to the database
