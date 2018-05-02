@@ -6,6 +6,7 @@ then in another terminal window, using the key that is printed under `db key is`
 #### `node index.js --db db2 --key <key>` 
 where `<key>` is the key that was printed above
 
+if you want to disable [auto-authorization](https://github.com/cblgh/hyperdb-examples/blob/master/index.js#L50-L69), add the `--noautoauth` flag to the above
 
 ## Commands
 there's a small cli (see [input.js](https://github.com/cblgh/hyperdb-examples/blob/master/input.js)) for interacting with the hyperdb. use it as follows
