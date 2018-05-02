@@ -47,27 +47,28 @@ function setupSwarm(db) {
 
     // emitted when a new peer joins 
     swarm.on("connection", (peer) => {
-        if (!disableAutoAuth) {
-            // initiate auto-authorization: 
-            // use the local key from the peer, stored in their userData, to authenticate them automatically
-            // (thanks substack && JimmyBoh https://github.com/karissa/hyperdiscovery/pull/12#pullrequestreview-95597621 )
-            if (!peer.remoteUserData) {
-                console.log("peer missing user data")
-                return
-            }
-            try { var remotePeerKey = Buffer.from(peer.remoteUserData) }
-            catch (err) { console.error(err); return }
-
-            db.authorized(remotePeerKey, function (err, auth) {
-                console.log(remotePeerKey.toString("hex"), "authorized? " + auth)
-                if (err) return console.log(err)
-                if (!auth) db.authorize(remotePeerKey, function (err) {
-                    if (err) return console.log(err)
-                    console.log(remotePeerKey.toString("hex"), "was just authorized!")
-                })
-            })
+        if (disableAutoAuth) {
+            return
         }
-        // return the swarm instance
-        return swarm
+        // initiate auto-authorization: 
+        // use the local key from the peer, stored in their userData, to authenticate them automatically
+        // (thanks substack && JimmyBoh https://github.com/karissa/hyperdiscovery/pull/12#pullrequestreview-95597621 )
+        if (!peer.remoteUserData) {
+            console.log("peer missing user data")
+            return
+        }
+        try { var remotePeerKey = Buffer.from(peer.remoteUserData) }
+        catch (err) { console.error(err); return }
+
+        db.authorized(remotePeerKey, function (err, auth) {
+            console.log(remotePeerKey.toString("hex"), "authorized? " + auth)
+            if (err) return console.log(err)
+            if (!auth) db.authorize(remotePeerKey, function (err) {
+                if (err) return console.log(err)
+                console.log(remotePeerKey.toString("hex"), "was just authorized!")
+            })
+        })
     })
+    // return the swarm instance
+    return swarm
 }
