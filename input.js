@@ -15,6 +15,7 @@ function readInput(db) {
     var pattern = (/\.(\w*)\s*(.*)/)
     rl.on("line", function(line) {
         var match = pattern.exec(line) 
+        if (!match) return
         var cmd = match[1] || ""
         var arg = match[2] || ""
         if (cmd === "put") {
