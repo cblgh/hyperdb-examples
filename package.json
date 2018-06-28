@@ -6,7 +6,7 @@
   "dependencies": {
     "dat-swarm-defaults": "^1.0.1",
     "discovery-swarm": "^5.1.1",
-    "hyperdb": "^3.0.0-2",
+    "hyperdb": "^3.2.0",
     "minimist": "^1.2.0"
   },
   "devDependencies": {},
